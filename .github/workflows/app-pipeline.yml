@@ -29,10 +29,10 @@ jobs:
             docker images
             
     - name: Login to Docker Registry
-      run: echo "9994281415@Ma" | docker login -u "aravindmallika" --password-stdin aravindmallika/doc_registry_learning
+      run: echo "9994281415@Ma" | docker login -u "aravindmallika" --password-stdin https://hub.docker.com/repository/docker/aravindmallika/doc_registry_learning
       
     - name: Build Docker Image
-      run: docker build -t aravindmallika/doc_registry_learning/my-image-name:latest .
+      run: docker build -t https://hub.docker.com/repository/docker/aravindmallika/doc_registry_learning/my-image-name:latest .
 
     - name: Push Docker Image
-      run: docker push aravindmallika/doc_registry_learning/my-image-name:latest
+      run: docker push https://hub.docker.com/repository/docker/aravindmallika/doc_registry_learning/my-image-name:latest
