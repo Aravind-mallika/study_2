@@ -32,10 +32,10 @@ jobs:
       uses: docker/setup-buildx-action@v1
 
     - name: Login to Docker Hub
-      run: echo "9994281415@Ma" | docker login -u "aravindmallika" --password-stdin
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
       env:
-        DOCKER_USERNAME: aravindmallika
-        DOCKER_PASSWORD: 9994281415@Ma
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build and push Docker image
       run: |
