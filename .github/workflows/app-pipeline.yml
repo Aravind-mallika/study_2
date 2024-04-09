@@ -28,11 +28,16 @@ jobs:
             docker build . --file Dockerfile --tag my-image-name:$(date +%s)
             docker images
             
-    - name: Login to Docker Registry
-      run: echo "9994281415@Ma" | docker login -u "aravindmallika" --password-stdin https://hub.docker.com
-      
-    - name: Build Docker Image
-      run: docker build -t https://hub.docker.com .
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
 
-    - name: Push Docker Image
-      run: docker push https://hub.docker.com/my-image-name:latest
+    - name: Login to Docker Hub
+      run: echo "9994281415@Ma" | docker login -u "aravindmallika" --password-stdin
+      env:
+        DOCKER_USERNAME: aravindmallika
+        DOCKER_PASSWORD: 9994281415@Ma
+
+    - name: Build and push Docker image
+      run: |
+        docker buildx build --platform linux/amd64,linux/arm64 -t aravindmallika/doc_registry_learning:latest .
+        docker push aravindmallika/doc_registry_learning:latest
