@@ -39,5 +39,7 @@ jobs:
 
     - name: tag and push Docker image
       run: |
+        docker build -t my-image-name:latest .
         docker tag my-image-name:latest aravindmallika/doc_registry_learning:latest
         docker images
+        docker push aravindmallika/doc_registry_learning:latest 
