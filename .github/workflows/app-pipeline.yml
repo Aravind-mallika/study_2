@@ -39,5 +39,5 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker buildx build --platform linux/amd64,linux/arm64 -t aravindmallika/doc_registry_learning:latest .
+        docker tag my-image-name:latest aravindmallika/doc_registry_learning:latest
         docker push aravindmallika/doc_registry_learning:latest
